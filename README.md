@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Const is a Dynamic Business Website to Render Projects to Customers using Node.js, Express.js, React, and AWS DynamoDB 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
