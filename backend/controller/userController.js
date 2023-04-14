@@ -7,19 +7,14 @@ const loginUser = async (req, res, next) => {
     if (user && await user.password === password) {
         res.json({
             _id: user.id,
-            name: user.name,
-            email: user.email,
-            token: generateToken(user._id),
+            name: user.username,
         })
     } else {
         res.status(400)
         throw new Error('Invalid credentials')
     }
-
 }
 
-
-  
 module.exports = {
     loginUser
 }
