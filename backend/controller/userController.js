@@ -1,30 +1,25 @@
-const db = require("../database/db");
+const User = require('../models/userModel')
 
-const getUserByName = async (name) => {
-    const params = {
-      TableName: 'users', 
-      IndexName: 'username',
-      KeyConditionExpression: 'name = :name',
-      ExpressionAttributeValues: {
-        ':name': name
-      }
-    };
-    try {
-      const data = await db.get(params).promise();
-      return data.Item;
-    } catch (error) {
-      console.error('Error retrieving user:', error);
-      //throw new Error('Failed to retrieve user');
+const loginUser = async (req, res, next) => {
+    const { username, password } = req.body;
+    const user = await User.findOne({ username });
+
+    if (user && await user.password === password) {
+        res.json({
+            _id: user.id,
+            name: user.name,
+            email: user.email,
+            token: generateToken(user._id),
+        })
+    } else {
+        res.status(400)
+        throw new Error('Invalid credentials')
     }
-};
 
-const getUser = async (req, res, next) => {
-    const user = await getUserByName(req.params.username);
-    res.send(user);
 }
 
 
   
 module.exports = {
-    getUser
+    loginUser
 }

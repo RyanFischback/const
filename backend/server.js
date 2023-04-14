@@ -1,7 +1,12 @@
 "use strict";
-var express = require('express');
-var app = express();
-var cors = require('cors')
+const express = require('express');
+const cors = require('cors');
+const connectDB = require('./database/db');
+const dotenv = require('dotenv').config();
+const port = process.env.PORT || 8887;
+
+connectDB();
+const app = express();
 
 app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // Replace with your React app's URL
@@ -10,14 +15,13 @@ app.use(function (req, res, next) {
   next();
 });
 
-var userRoute = require('./routes/userRoute');
+const userRoute = require('./routes/userRoute');
 
 app.use(express.json());
 app.use(cors({origin: true}))
 
 app.use('/api', userRoute);
 
-var port = 8887;
 app.listen(port, function () {
   console.log("Server started on port ".concat(port));
 });
