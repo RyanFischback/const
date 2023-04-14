@@ -1,1 +1,1 @@
-const db = require('../database/db');
+const {db} = require('../database/db');

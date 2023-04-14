@@ -1,13 +1,13 @@
-const aws  = require('aws-sdk');
+const mongoose = require('mongoose')
 
-// Configure the AWS SDK
-aws.config.update({
-    accessKeyId: 'YOUR_ACCESS_KEY_ID',
-    secretAccessKey: 'YOUR_SECRET_ACCESS_KEY',
-    region: 'us-east'
-});
-  
-// Create a DynamoDB client once
-const docClient = new AWS.DynamoDB.DocumentClient();
+const connectDB = async () => {
+    try {
+        const conn = await mongoose.connect(process.env.MONGO_URI)
+        console.log(`MongoDB Connected : ${conn.connection.host}`)
+    }   catch (error) {
+        console.log(error)
+        process.exit(1)
+    }
+}
 
-module.exports = docClient;
+module.exports = connectDB
