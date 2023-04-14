@@ -1,4 +1,4 @@
-# Const is a Dynamic Business Website to Render Projects to Customers using Node.js, Express.js, React, and AWS DynamoDB 
+# Const is a Dynamic Business Website to Render Projects to Customers using Node.js, Express.js, React, and ~~AWS DynamoDB~~ Now MongoDB Atlas 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
