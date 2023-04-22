@@ -16,11 +16,13 @@ app.use(function (req, res, next) {
 });
 
 const userRoute = require('./routes/userRoute');
+const projectRoute = require('./routes/projectRoute');
 
 app.use(express.json());
 app.use(cors({origin: true}))
 
 app.use('/api', userRoute);
+app.use('/api', projectRoute);
 
 app.listen(port, function () {
   console.log("Server started on port ".concat(port));
