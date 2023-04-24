@@ -4,6 +4,7 @@ import './index.css';
 import App from './App';
 import Login from './views/Login/Login';
 import Project from './views/Project/Project';
+import PlayerProfile from './views/PlayerProfile/PlayerProfile';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes ,Route }from "react-router-dom";
 
@@ -14,6 +15,7 @@ root.render(
       <Route path="/" element={<App/>} />
       <Route path="/login" element={<Login/>} />
       <Route path="/project" element={<Project/>} />
+      <Route path="/profile" element={<PlayerProfile/>} />
     </Routes>
   </BrowserRouter>
 );
