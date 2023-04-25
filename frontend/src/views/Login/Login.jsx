@@ -1,47 +1,83 @@
-import Navigation from "../Navigation/Navigation"
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./Login.css";
+import {useState, useEffect} from 'react'
+import {FaSignInAlt} from 'react-icons/fa'
+import {useSelector, useDispatch} from 'react-redux'
+import {useNavigate} from 'react-router-dom'
+import {toast} from 'react-toastify'
+import {login, reset} from '../../features/authSlice'
+import Spinner from '../../components/Spinner';
 
-const Login = () => {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const navigate = useNavigate();
+ 
+function Login() {
+  const [formData, setFormData] = useState({
+        email: '',
+        password: '',
+    })
+
+
+  const {email, password} = formData
+
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
+
+  const { user, isLoading, isError, isSuccess, message } = useSelector(
+    (state) => state.auth
+  )
+
+  useEffect(() => {
+    if (isError) {
+      toast.error(message)
+    }
+
+    if (isSuccess || user) {
+      navigate('/')
+    }
+
+    dispatch(reset())
+  }, [user, isError, isSuccess, message, navigate, dispatch])
+
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+    }))
+  }
+  const onSubmit = (e) => {
+    e.preventDefault()
+    const userData = {
+        email,
+        password,
+      }
   
-    const handleLogin = (e) => {
-      e.preventDefault();
-      // Add your login logic here
-      // For example, you can make a request to a server to verify the user's credentials
-      // If the login is successful, you can redirect the user to another page using the history object
-      navigate("/");
-    };
-    const handleEmailChange = (event) => {
-        setEmail(event.target.value);
-      };
-      
-      const handlePasswordChange = (event) => {
-        setPassword(event.target.value);
-      };
+      dispatch(login(userData))
+  }
+  if (isLoading) {
+    return <Spinner />
+  }
 
-    return (
+  return (
     <>
-    <Navigation />
-    <div className="login-container">
-      <h1>Login Page</h1>
-      <form onSubmit={handleLogin}>
-        <label>
-          Email:
-          <input type="email" value={email} onChange={handleEmailChange} />
-        </label>
-        <label>
-          Password:
-          <input type="password" value={password} onChange={handlePasswordChange} />
-        </label>
-        <button type="submit">Log in</button>
-      </form>
-    </div>
-    </>
-    );
-};
+    <section className='heading'>
+        <h1> 
+            <FaSignInAlt /> Login
+        </h1>
+    </section>
 
-export default Login;
+    <section className='form'>
+        <form onSubmit={onSubmit}>
+            <div className='form-group'>
+            <input type="email" className="form-control" id="email" name='email' value={email} placeholder='Enter your email' onChange={onChange} />
+            </div>
+            <div className='form-group'>
+            <input type="password" className="form-control" id="password" name='password' value={password} placeholder='Enter your password' onChange={onChange} />
+            </div>
+            <div className="form-group">
+                <button type='submit' className='btn btn-block'>Submit</button>
+            </div>
+        </form>
+    </section>
+    </>
+  )
+}
+
+export default Login
