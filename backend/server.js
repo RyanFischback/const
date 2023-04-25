@@ -1,28 +1,20 @@
-"use strict";
 const express = require('express');
-const cors = require('cors');
 const connectDB = require('./database/db');
 const dotenv = require('dotenv').config();
-const port = process.env.PORT || 8887;
+const port = process.env.PORT || 5000;
+const { errorHandler } = require('./middleware/errorMiddleware');
 
 connectDB();
+
 const app = express();
 
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000'); // Replace with your React app's URL
-  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
-  res.header('Access-Control-Allow-Methods', 'DELETE, POST, GET, OPTIONS');
-  next();
-});
-
-const userRoute = require('./routes/userRoute');
-const projectRoute = require('./routes/projectRoute');
-
 app.use(express.json());
-app.use(cors({origin: true}))
+app.use(express.urlencoded({ extended: false }));
 
-app.use('/api', userRoute);
-app.use('/api', projectRoute);
+app.use('/api/users', require('./routes/userRoute'));
+//app.use('/api/project', require('./routes/projectRoute'));
+
+app.use(errorHandler);
 
 app.listen(port, function () {
   console.log("Server started on port ".concat(port));

@@ -1,13 +1,21 @@
-import Navigation from "../Navigation/Navigation"
+import { useSelector, } from 'react-redux'
 
-//Home page will have a Navigation bar, side scrolling images for projects that create a sidemenu popup for additional information about that project. (Then afterwards have each project link to its own project page with additional images and information, kinda blog esq)
-const Home = () => {
-    return (
-        <>
-        <Navigation />
-            <p>Home Page</p>
-        </>
-    );
-};
+function Dashboard() {
 
-export default Home;
+
+  const { user } = useSelector((state) => state.auth)
+
+  return (
+    <>
+      <section className='heading'>
+        <h1>Welcome {user && user.name}</h1>
+      </section>
+
+      <section className='content'>
+          <h3>Projects</h3>
+      </section>
+    </>
+  )
+}
+
+export default Dashboard
