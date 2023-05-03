@@ -6,8 +6,8 @@
 <br>
 
 Welcome to the [const](link will be here) codebase, the website that can
-be reused for showcasing. The primary goals and direction require
-reusability, scalability, and stability to ensure a successful product.
+be reused for showcasing a business, a portfolio, or just an ordinary image gallery. The primary goals and direction will focus on
+ensuring reusability, scalability, and stability.
 
 ## What is Const?
 
