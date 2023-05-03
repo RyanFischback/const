@@ -12,7 +12,7 @@ ensuring reusability, scalability, and stability.
 ## What is Const?
 
 Const is a MERN (MongoDB, Express.js, React.js, Node.js) project where
-it only relies on a data to render components dynamically. 
+it only relies on data to render components dynamically. 
 As long as the guidelines for data input are followed because there are
 not currently any plans for switching between themes and the frontend components will be created based on database data and have ZERO hard coding.
 
