@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const asyncHandler = require('express-async-handler')
-const User = require('../models/userModel')
+const User = require('../models/userModel');
 
 // @desc    Register new user
 // @route   POST /api/users
@@ -51,10 +51,9 @@ const registerUser = asyncHandler(async (req, res) => {
 // @access  Public
 const loginUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body
-
   // Check for user email
   const user = await User.findOne({ email })
-
+  
   if (user && (await bcrypt.compare(password, user.password))) {
     res.json({
       _id: user.id,
