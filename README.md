@@ -51,6 +51,7 @@ Run on a [Express](https://expressjs.com/) backend - more to come
 - [Express](https://expressjs.com/): temp placeholder
 - [React](https://react.dev/): temp placeholder
 - [Node](https://nodejs.org/en): temp placeholder
+- [Redux](https://redux-toolkit.js.org/): temp placeholder
 
 #### Containers
 
