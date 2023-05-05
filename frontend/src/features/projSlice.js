@@ -5,11 +5,13 @@ const initialState = {
     isError: false,
     isSuccess: false,
     isLoading: false,
-    message: ''
+    message: '',
+    projects: []
 }
 
 export const display = createAsyncThunk('proj/display', async () => {
-    await projService.display
+    console.log("awaiting display projects slice")
+    await projService.display()
 })
 
 export const projSlice = createSlice({
@@ -26,9 +28,10 @@ export const projSlice = createSlice({
     extraReducers: (builder) => {
         builder.addCase(display.pending, (state) => {
             state.isLoading = true
-        }).addCase(display.fulfilled, (state) => {
+        }).addCase(display.fulfilled, (state, action) => {
             state.isLoading = false
             state.isSuccess = true
+            state.projects = action.payload
         })
     }
 })
