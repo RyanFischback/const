@@ -22,9 +22,9 @@ The way this project works is you setup your own database in the .env (has to be
 The data for your projects needs to be input into the database as follows:
 
 Projects:
-name: string
-description: string
-imageUrl: string
+
+[name: string] [description: string] [imageUrl: string]
+
 
 You can also check out the models folder in case it's been updated since this was written to see how the tables should be formatted since they will be rendered in the frontend according to the models.
 
