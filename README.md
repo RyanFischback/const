@@ -1,84 +1,39 @@
 <div align="center">
   <br>
   <h1>Const 🌱</h1>
-  <strong>Reusable Dynamic Showcasing</strong>
+  <strong>Reusable Project Showcasing</strong>
 </div>
 <br>
 
-Welcome to the [const](link will be here) codebase, the website that can
-be reused for showcasing a business, a portfolio, or just an ordinary image gallery. The primary goals and direction will focus on
+Reused for showcasing a business, a portfolio, or just an ordinary image gallery. The primary goals and direction will focus on
 ensuring reusability, scalability, and stability.
 
 ## What is Const?
 
 Const is a MERN (MongoDB, Express.js, React.js, Node.js) project where
-it only relies on data to render components dynamically. (kind of ironic, i know) 
-As long as the guidelines for data input are followed because there are
-not currently any plans for switching between themes and the frontend components will be created based on database data and have ZERO hard coding.
-
-## Table of Contents
-
-- [What is Const?](#what-is-const)
-- [Table of Contents](#table-of-contents)
-- [Community](#community)
-- [Contributing](#contributing)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-    - [Local](#local)
-    - [Containers](#containers)
-  - [Installation Documentation](#installation-documentation)
-- [Developer Documentation](#developer-documentation)
-
-## Community
-
-Temp placeholder
-
-## Contributing
-
-Temp placeholder
+it only relies on data to render components dynamically. (kind of ironic, i know)
 
 ## Getting Started
 
-This section will provide a high-level quick start guide.
+If you want to use const you need to clone it locally and have node installed. Run "npm install" in the root and frontend folder to add the node_modules. 
 
-Run on a [Express](https://expressjs.com/) backend - more to come
+The way this project works is you setup your own database in the .env (has to be mongodb cloud). The project will connect to your database after you create it and update the .env link to that database.
 
-### Prerequisites
+The data for your projects needs to be input into the database as follows:
 
-#### Local
+Projects:
+name: string
+description: string
+imageUrl: string
 
-- [MongoDB](https://www.mongodb.com/cloud) temp placeholder
-- [Express](https://expressjs.com/): temp placeholder
-- [React](https://react.dev/): temp placeholder
-- [Node](https://nodejs.org/en): temp placeholder
-- [Redux](https://redux-toolkit.js.org/): temp placeholder
+You can also check out the models folder in case it's been updated since this was written to see how the tables should be formatted since they will be rendered in the frontend according to the models.
 
-#### Containers
+Once you have some projects you should be good to go! Enjoy and feel free to contribute by creating pull requests
 
-**Temp**
+#### Stack
 
-- Temp placeholder
-
-### Installation Documentation
-
-Temp placeholder
-
-## Developer Documentation
-
-Temp placeholder
-
-## Contributors 
-
-- [Temp Placeholder]()
-
-## Acknowledgements
-
-Temp placeholder
-
-## License
-
-Temp placeholder - Will likely remove this section
-
-<br>
-
-[⬆ Back to Top](#Table-of-contents)
+- [MongoDB](https://www.mongodb.com/cloud): 
+- [Express](https://expressjs.com/): 
+- [React](https://react.dev/): 
+- [Node](https://nodejs.org/en): 
+- [Redux](https://redux-toolkit.js.org/): 
