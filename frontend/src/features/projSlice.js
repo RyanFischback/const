@@ -11,7 +11,7 @@ const initialState = {
 
 export const display = createAsyncThunk('proj/display', async () => {
     console.log("awaiting display projects slice")
-    await projService.display()
+    return await projService.display()
 })
 
 export const projSlice = createSlice({

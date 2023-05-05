@@ -1,0 +1,11 @@
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  
+  .project-tile {
+    border: 1px solid #ccc;
+    padding: 1rem;
+  }
+  
